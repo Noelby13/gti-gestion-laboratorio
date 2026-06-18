@@ -33,4 +33,31 @@ export class ReservaRepository {
         const info = stmt.run(reserva.idAula, reserva.idUsuario, reserva.fechaInicio, reserva.fechaFin);
         return { idReserva: info.lastInsertRowid, ...reserva };
     }
+
+    async update(idReserva: number, data: { idAula?: number, fechaInicio?: string, fechaFin?: string }): Promise<any> {
+        const fields = [];
+        const values = [];
+        if (data.idAula !== undefined) {
+            fields.push('idAula = ?');
+            values.push(data.idAula);
+        }
+        if (data.fechaInicio !== undefined) {
+            fields.push('fechaInicio = ?');
+            values.push(data.fechaInicio);
+        }
+        if (data.fechaFin !== undefined) {
+            fields.push('fechaFin = ?');
+            values.push(data.fechaFin);
+        }
+        
+        if (fields.length === 0) return null;
+
+        values.push(idReserva);
+        const query = `UPDATE ReservaAula SET ${fields.join(', ')} WHERE idReserva = ?`;
+        const stmt = db.prepare(query);
+        stmt.run(...values);
+        
+        const fetchStmt = db.prepare(`SELECT * FROM ReservaAula WHERE idReserva = ?`);
+        return fetchStmt.get(idReserva);
+    }
 }

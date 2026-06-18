@@ -30,4 +30,18 @@ export class ReservaController {
             res.status(409).json({ error: error.message }); // 409 Conflict para double-booking
         }
     };
+
+    update = async (req: Request, res: Response) => {
+        try {
+            const idReserva = parseInt(req.params.id);
+            const actualizada = await this.service.actualizarReserva(idReserva, req.body);
+            if (!actualizada) {
+                res.status(404).json({ error: 'Reserva no encontrada o sin cambios' });
+                return;
+            }
+            res.json(actualizada);
+        } catch (error: any) {
+            res.status(409).json({ error: error.message });
+        }
+    };
 }
