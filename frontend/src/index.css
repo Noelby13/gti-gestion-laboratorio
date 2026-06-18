@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,400&family=Monotype+Corsiva&display=swap');
+
+@theme {
+  --color-uncsm-blue: #025490;
+  --color-uncsm-gold: #CCAE7A;
+  --color-uncsm-white: #F4F7F9;
+  --font-sans: "Roboto", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-uncsm-white text-gray-800 font-sans;
+  }
+}
