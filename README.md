@@ -1,4 +1,4 @@
-# Sistema de Gestión de Inventariado y Reservas (UNCSM)
+# Gestion de laboratorios
 
 Este proyecto es un sistema para gestionar inventario (ITAM) y reservas de laboratorios, estructurado bajo **Clean Architecture**.
 
@@ -38,4 +38,4 @@ La aplicación web se ejecutará en la dirección proporcionada por Vite (usualm
 - **Base de Datos**: SQLite (`better-sqlite3`)
 - **Backend**: Node.js, Express, TypeScript
 - **Frontend**: React, Vite, TailwindCSS
-- **Diseño**: Manual de Identidad Institucional (UNCSM)
+
